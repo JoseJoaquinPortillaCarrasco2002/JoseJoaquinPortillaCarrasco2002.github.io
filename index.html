@@ -15,6 +15,17 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-809M551S1E');
+    document.addEventListener('DOMContentLoaded', function () {
+    const btnAcceso = document.querySelector('.button[href="registro.html"]');
+    if (btnAcceso) {
+      btnAcceso.addEventListener('click', function () {
+        gtag('event', 'click_acceso_anticipado', {
+          'event_category': 'interaccion',
+          'event_label': 'Botón Quiero Acceso Anticipado'
+        });
+      });
+    }
+  });
   </script>
 
   <style>
