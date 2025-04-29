@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro de Interesados - Delivery Express</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-809M551S1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-809M551S1E');
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    // Evento: cuando alguien hace clic en el botón Enviar
+    submitButton.addEventListener('click', function () {
+      gtag('event', 'click_enviar_formulario', {
+        'event_category': 'registro',
+        'event_label': 'Botón Enviar Registro'
+      });
+    });
+
+    // Evento: cuando el usuario interactúa con al menos un campo del formulario
+    const campos = form.querySelectorAll('input, select');
+    campos.forEach(campo => {
+      campo.addEventListener('input', function () {
+        gtag('event', 'interaccion_formulario', {
+          'event_category': 'registro',
+          'event_label': 'Campo Formulario Rellenado',
+          'field_name': campo.name
+        });
+      }, { once: true }); // solo una vez por campo
+    });
+  });
+  </script>
 
   <style>
     body {
